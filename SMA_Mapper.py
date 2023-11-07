@@ -11,7 +11,7 @@ for line in sys.stdin:
         vals = val.split(",")
         
         #return the individual values from the split - stock code, date, and price
-        yield (vals[0], vals[1], vals[2])
+        yield {vals[0] : (vals[1], vals[2])}
     except
         continue
 
