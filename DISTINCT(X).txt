@@ -1,0 +1,27 @@
+Map(key, value){
+
+// key: column number, value: number in a column
+
+for each number N in value:
+
+Emit(N,”1”);}
+
+Reduce(key,value){
+
+// key: column number, value: "1"
+
+current_key = None
+
+for each key:
+
+if current_key == key:
+
+valuet = value
+
+else:
+
+if current_key:
+
+Emit(current_key)
+
+current_key= key
