@@ -9,7 +9,7 @@ lstInfo = list()
 smaInterval = 3
 
 #read each line from the input
-for k, v in sys.stdin:
+for k, v in sys.stdin.items():
     
     #add the values from line to their respective lists
     lstStock.append(k)
