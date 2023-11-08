@@ -9,7 +9,8 @@ for line in sys.stdin:
         
         #split at the comma
         vals = val.split(",")
-        print(vals[0],"\t",(vals[1],vals[2]))   
+        
+        print(vals[0],"\t",vals[1],"\t",vals[2])   
     except:
         continue
 
