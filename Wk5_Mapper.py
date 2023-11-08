@@ -1,7 +1,7 @@
 import sys
 import csv
 
-reader = csv.reader(syst.stdin, delimiter=':')
+reader = csv.reader(syst.stdin, delimiter=';')
 
 power = 0.0
 
