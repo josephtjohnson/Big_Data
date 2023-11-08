@@ -31,11 +31,11 @@ for line in sys.stdin:
                 
         #we have verified we are calculating the moving average based on the same stock
         if(continue):
-            sumVal = 0
+            sumVal = 0.0
             
             #add the stock prices together
             for record in lstStockRecords:
-                sumVal += float(record[1][1])
+                sumVal += record[1][1]
                 
             #calculate the moving average
             sumVal = round((sumVal / smaInterval),2)
