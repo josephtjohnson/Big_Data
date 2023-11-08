@@ -3,24 +3,21 @@ import csv
 
 reader = csv.reader(sys.stdin, delimiter='\t')
 
-maxTemp_year = list()
+prevDate=None
+maxDate = ''
+maxTemp = 0
 
 for line in reader:
-    year = line[0]
-    month = line[1][0]
-    temp = line[1][1]
-    
-    if len(maxtemp_year) = 0:
-        maxTemp_year.append((year,(month,temp))
+    date = line[0]
+    #are we in the same year
+    if date[0:5] == prevDate[0:5]:
+        #if we are in the same year is the current line's temp greater than the current maxTemp
+        if maxTemp < line[1]:
+            maxDate = line[0]
+            maxTemp = line[1]
     else:
-        for value in maxTemp_year:
-            if value[0] == year:
-                if value[1][1] < temp:
-                    value[1][0] = month
-                    value[1][1] = temp
-                    
-    
-        
-#print the maxPower and the date
-for value in maxTemp_year:
-    print str(value[0] + value[1][0]), "\t" value[1][1]
+        if not prevDate == None:
+            print prevDate, "\t", str(maxTemp)
+        maxDate = line[0]
+        maxTemp = line[1]
+    prevDate = date
