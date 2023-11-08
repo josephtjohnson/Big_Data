@@ -3,6 +3,7 @@ import sys
 
 #read each line from the input
 for line in sys.stdin:
+    kvp = {}
     try
         #strip white spaces
         val = line.strip()
@@ -11,7 +12,7 @@ for line in sys.stdin:
         vals = val.split(",")
         
         #return the individual values from the split - stock code, date, and price
-        yield {vals[0] : (vals[1], vals[2])}
+        yield kvp[vals[0]] = (vals[1],vals[2])
     except
         continue
 
