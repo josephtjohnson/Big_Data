@@ -9,11 +9,12 @@ lstInfo = list()
 smaInterval = 3
 
 #read each line from the input
-for k, v in sys.stdin.items():
+for k,v in sys.stdin.items():
     
     #add the values from line to their respective lists
     lstStock.append(k)
     lstInfo.append(v)
+    print(k,v)
     
     #if we have accrued three stock prices then proceed
     if len(lstStock) == smaInterval:
@@ -24,13 +25,14 @@ for k, v in sys.stdin.items():
             
             #add the stock prices together
             for v in lstInfo:
+                print(v)
                 sumVal += v[1]
                 
             #calculate the moving average
             sumVal = sumVal / smaInterval
             
             #print the result
-            print '%s\t%s\t%.2f' % (lstStock[2], lstInfo[2][0], sumVal)
+            print ('%s\t%s\t%.2f' % (lstStock[2], lstInfo[2][0], sumVal))
             
             #remove the oldest value from each list
             del lstStock[0]
