@@ -1,27 +1,29 @@
 Map(key, value){
-
-// key: column number, value: number in a column
-
-for each number N in value:
-
-Emit(N,”1”);}
+  #the key is the column number
+  #the value is the number in the column
+  #loop through the values and yield each one with a count
+  for each number n in value:
+    yield(n, "1")
+}
 
 Reduce(key,value){
+  #the key is the column number
+  #the value is "1"
+  #create out current_key variable
+  prev_key = None
 
-// key: column number, value: "1"
+  #loop through the list of keys
+  for each key:
 
-current_key = None
+    #does the prev line's key equal the current key
+    #if so then pass over it
+    if prev_key == key:
+      continue
 
-for each key:
-
-if current_key == key:
-
-valuet = value
-
-else:
-
-if current_key:
-
-Emit(current_key)
-
-current_key= key
+    #prev line's key does not equal current key
+    else:
+      #if the prev key variable is not empty
+      if prev_key:
+        yield (prev_key)
+      prev_key= key
+}
