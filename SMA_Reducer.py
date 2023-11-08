@@ -9,12 +9,12 @@ lstInfo = list()
 smaInterval = 3
 
 #read each line from the input
-for k,v in sys.stdin.items():
+for line in sys.stdin:
+    print(line)
     
     #add the values from line to their respective lists
-    lstStock.append(k)
-    lstInfo.append(v)
-    print(k,v)
+    lstStock.append(line[0])
+    lstInfo.append(line[1])
     
     #if we have accrued three stock prices then proceed
     if len(lstStock) == smaInterval:
