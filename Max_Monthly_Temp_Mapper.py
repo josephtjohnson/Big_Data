@@ -1,19 +1,16 @@
 import sys
 import csv
 
-reader = csv.reader(syst.stdin, delimiter=':')
+reader = csv.reader(syst.stdin)
 
-year = list()
-month_temp = list()
+temp = 0
 
 for line in reader:
-    #try to store power as a float
+    #try to store temp as an integer
     try:
-        values = line.split(',')
-        year = values[0][0:4]
-        month_temp = (values[0][4:6],values[1])
+        temp = int(line[1])
     except:
         continue
         
-    #store the key as the date and the value as power
-    print year, "\t", month_temp
+    #store the key as the date and the value as temp
+    print line[0], "\t", temp
