@@ -12,11 +12,12 @@ maxTemp = 0
 for line in reader:
     date = line[0]
     #are we in the same year
-    if date[0:5] == prevDate[0:5]:
-        #if we are in the same year is the current line's temp greater than the current maxTemp
-        if maxTemp < line[1]:
-            maxDate = line[0]
-            maxTemp = line[1]
+    if not prevDate == None:
+        if date[0:5] == prevDate[0:5]:
+            #if we are in the same year is the current line's temp greater than the current maxTemp
+            if maxTemp < line[1]:
+                maxDate = line[0]
+                maxTemp = line[1]
     else:
         #if the previous date is not empty
         if not prevDate == None:
