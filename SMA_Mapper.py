@@ -12,8 +12,8 @@ for line in sys.stdin:
         #split at the comma
         vals = val.split(",")
         
-        if prevDate =! vals[2]:
-            prevDate == vals[2]
+        if not prevDate == vals[1]:
+            prevDate == vals[1]
             print(vals[0],"\t",vals[1],"\t",vals[2])           
     except:
         continue
