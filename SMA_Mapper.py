@@ -11,11 +11,10 @@ for line in sys.stdin:
         
         #split at the comma
         vals = val.split(",")
-        
+
+        #exclude duplicate data by checking the date
         if not prevDate == vals[1]:
-            prevDate == vals[1]
+            prevDate = vals[1]
             print(vals[0],"\t",vals[1],"\t",vals[2])           
     except:
         continue
-
-#cat sample.txt | python SMA_Mapper.py | python SMA_Reducer.py
