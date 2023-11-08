@@ -1,9 +1,11 @@
 #import the sys module
 import sys
 
-#create three lists to hold the data we receive from the mapper
-lstStock = list()
-lstInfo = list()
+#create a list to hold the data we receive from the mapper
+lstStockRecords = list()
+
+#create variable to hold current stock
+currentStock=None
 
 #the moving average interval
 smaInterval = 3
@@ -12,33 +14,37 @@ smaInterval = 3
 for line in sys.stdin:
     vals = line.split('\t')
     
-    #add the values from line to their respective lists
-    lstStock.append(vals[0].strip())
-    lstInfo.append(vals[1].strip())
+    #parse the values and add them to the list
+    lstStockRecords.append([vals[0],[vals[1],vals[2]]])
+    currentStock = vals[0]
+    currentDate = vals[1]
     
     #if we have accrued three stock prices then proceed
-    if len(lstStock) == smaInterval:
+    if len(lstStockRecords) == smaInterval:           
     
         #verify the moving average is being calculated based on the same stock, if so proceed
-        if lstStock[0] == lstStock[2]:
+        continue = true
+        for record in lstStockRecords:
+            if record[0] != currentStock:
+                continue = false
+                break
+                
+        #we have verified we are calculating the moving average based on the same stock
+        if(continue):
             sumVal = 0
             
             #add the stock prices together
-            for v in lstInfo:
-                print(v)
-                sumVal += v[1]
+            for record in lstStockRecords:
+                sumVal += record[1][1]
                 
             #calculate the moving average
             sumVal = sumVal / smaInterval
             
             #print the result
-            print ('%s\t%s\t%.2f' % (lstStock[2], lstInfo[2][0], sumVal))
+            print (currentStock,"\t",sumVal,"\t",currentDate)
+
+            del lstStockRecords[0]
             
-            #remove the oldest value from each list
-            del lstStock[0]
-            del lstInfo[0]
-            
-        #we have a mixed list for the stock so we need to remove the oldest value from each list and read the next line
+        #remove the oldest value from each list and move on to the next line
         else:
-            del lstStock[0]
-            del lstInfo[0]
+            del lstStockRecords[0]
