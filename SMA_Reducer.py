@@ -35,7 +35,7 @@ for line in sys.stdin:
             
             #add the stock prices together
             for record in lstStockRecords:
-                sumVal += record[1][1]
+                sumVal += float(record[1][1])
                 
             #calculate the moving average
             sumVal = round((sumVal / smaInterval),2)
