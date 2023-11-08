@@ -3,15 +3,13 @@ import sys
 
 #read each line from the input
 for line in sys.stdin:
-    kvp = {}
     try:
         #strip white spaces
         val = line.strip()
         
         #split at the comma
         vals = val.split(",")
-        kvp[vals[0]] = (vals[1],vals[2])
-        print(kvp)        
+        print(vals[0] "\t" vals[1])   
     except:
         continue
 
