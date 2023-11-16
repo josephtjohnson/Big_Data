@@ -2,14 +2,12 @@ from itertools import groupby
 from operator import itemgetter
 import sys
 
-def read_mapper_output(file, separator):
+def read_mapper_output(file):
     for line in file:
-    yield line.rstrip().split(separator, 1)
-    
-def main(separator=','):
-    data = read_mapper_output(sys.stdin, separator)
-    for line in data:
-        outputKey = data[0]
-        lstFriends = data[1]
-        common = set.intersection(*map(set,lstFriends))
-        yield outputKey, common
+        yield line.rstrip().split(' ,')
+
+
+values = read_mapper_output(sys.stdin)
+for currentSet, friendsList in groupby(values, itemgetter(0)):
+     for currentSet, friends in friendsList:
+          print(currentSet,friends)
