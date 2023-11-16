@@ -1,24 +1,17 @@
 import sys
 
-def read_mapper_input(stdin):
-"""
-Generator to limit memory usage while reading input.
-"""
-for line in stdin:
-    yield line
-    
-def main():
-    for line in read_mapper_input(sys.stdin):
-    userID = line.split(",")[0]
-    friendIDs = list(line.split(",")[1])
-    friendIDs.sort()
-    for f in friendIDs:
-    
-        if userId > f:
-            key = (f,userID)
-        else :
-            key = (userID,f) 
-            
-        value = friendIDs
-        
-        yield key,value
+for line in sys.stdin:
+    try:
+        values = line.split(',')
+        userID = values[0]
+        friendIDs = list(values[1].split()) 
+        valueList = []
+        for f in friendIDs:
+            if int(userID) > int(f):
+                key = (f,userID)
+            else :
+                key = (userID,f) 
+            value = friendIDs
+            print('{0} ,{1}'.format(key,value))
+    except:
+        continue
