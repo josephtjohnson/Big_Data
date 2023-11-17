@@ -2,16 +2,14 @@ import sys
 
 for line in sys.stdin:
     try:
-        values = line.split(',')
-        userID = values[0]
-        friendIDs = list(values[1].split()) 
-        valueList = []
-        for f in friendIDs:
-            if int(userID) > int(f):
-                key = (f,userID)
+        input = line.split(',')
+        key = input[0] 
+        values = input[1].split() 
+        for f in values:
+            if int(key) > int(f):
+                fset = (f,key)
             else :
-                key = (userID,f) 
-            value = friendIDs
-            print('{0} ,{1}'.format(key,value))
+                fset = (key,f) 
+            print('{}\t{}'.format(fset,values))
     except:
         continue
