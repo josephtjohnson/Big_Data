@@ -4,10 +4,9 @@ import sys
 
 def read_mapper_output(file):
     for line in file:
-        yield line.rstrip().split(' ,')
+        yield line.rstrip().split('\t')
 
 
-values = read_mapper_output(sys.stdin)
-for currentSet, friendsList in groupby(values, itemgetter(0)):
-     for currentSet, friends in friendsList:
-          print(currentSet,friends)
+values = sorted(read_mapper_output(sys.stdin))
+for currentSet, friendsList in groupby(values,key=itemgetter(0)):
+     print(currentSet, friendsList)
